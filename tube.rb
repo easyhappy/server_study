@@ -86,13 +86,17 @@ class Tube
     attr_reader :app
 
     def run(app)
+      puts 'run before'
       @app = app
+      puts 'run after'
     end
 
     def self.parse_file(file)
       content = File.read(file)
       builder = self.new
+      puts 'instance before'
       builder.instance_eval(content)
+      puts 'instance after'
       builder.app
     end
   end
